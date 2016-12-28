@@ -13,11 +13,11 @@ import com.java2.web.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private UserRepository userRepsitory;
+	private UserRepository userRepository;
 	
 	@Override
 	public List<UserDTO> getUsers() {
-		List<UserEntity> users = userRepsitory.getUsers();
+		List<UserEntity> users = userRepository.getUsers();
 		List<UserDTO> dtos = new ArrayList<>();
 		for( UserEntity user:users){
 			UserDTO dto = new UserDTO();
@@ -33,15 +33,35 @@ public class UserServiceImpl implements UserService {
 	public void addUser(UserDTO user) {
 		UserEntity userEntity = new UserEntity();
 		userEntity.setName(user.getName());
-		userRepsitory.addUser(userEntity);
+		userRepository.addUser(userEntity);
 	}
 
+	public void addUser(UserEntity user) {
+		userRepository.addUser(user);
+	}
+
+	public void removeUser(UserEntity user) {
+		userRepository.removeUser(user);
+	}
+
+	public void updateStudent(UserEntity user) {
+		userRepository.updateStudent(user);
+	}
+
+	public UserEntity findUser(int userId) {
+		return userRepository.findUser(userId);
+
+	}
+
+	public List<UserEntity> getListUser() {
+		return userRepository.getListUser();
+
+	}
 	public UserRepository getUserRepsitory() {
-		return userRepsitory;
+		return userRepository;
 	}
 	
 	public void setUserRepsitory(UserRepository userRepsitory) {
-		this.userRepsitory = userRepsitory;
+		this.userRepository = userRepsitory;
 	}
-
 }
