@@ -14,12 +14,12 @@ import com.java2.web.repository.UserRepository;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Override
 	public List<UserDTO> getUsers() {
 		List<UserEntity> users = userRepository.getUsers();
 		List<UserDTO> dtos = new ArrayList<>();
-		for( UserEntity user:users){
+		for (UserEntity user : users) {
 			UserDTO dto = new UserDTO();
 			dto.setId(user.getId());
 			dto.setName(user.getName());
@@ -27,41 +27,35 @@ public class UserServiceImpl implements UserService {
 		}
 		return dtos;
 	}
-	
 
 	@Override
 	public void addUser(UserDTO user) {
 		UserEntity userEntity = new UserEntity();
 		userEntity.setName(user.getName());
 		userRepository.addUser(userEntity);
-	}
-
-	public void addUser(UserEntity user) {
-		userRepository.addUser(user);
-	}
-
-	public void removeUser(UserEntity user) {
-		userRepository.removeUser(user);
-	}
-
-	public void updateStudent(UserEntity user) {
-		userRepository.updateStudent(user);
-	}
-
-	public UserEntity findUser(int userId) {
-		return userRepository.findUser(userId);
 
 	}
 
-	public List<UserEntity> getListUser() {
-		return userRepository.getListUser();
+	@Override
+	public void removeUser(int idUser) {
+		userRepository.removeUser(idUser);
+	}
 
+	@Override
+	public void updateUser(UserDTO user) {
+		UserEntity userEntity = new UserEntity();
+		userEntity.setName(user.getName());
+		userRepository.updateUser(userEntity);
 	}
-	public UserRepository getUserRepsitory() {
-		return userRepository;
-	}
-	
-	public void setUserRepsitory(UserRepository userRepsitory) {
-		this.userRepository = userRepsitory;
+
+	@Override
+	public UserDTO getUser(int idUser) {
+
+		UserEntity user = userRepository.getUser(idUser);
+		UserDTO dto = new UserDTO();
+
+		dto.setId(user.getId());
+		dto.setName(user.getName());
+		return dto;
 	}
 }

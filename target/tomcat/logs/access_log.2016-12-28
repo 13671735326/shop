@@ -38,3 +38,4 @@
 127.0.0.1 - - [28/Dec/2016:18:21:31 +0800] "DELETE /users HTTP/1.1" 405 1051 http-bio-9090-exec-3 1
 127.0.0.1 - - [28/Dec/2016:18:22:07 +0800] "DELETE /users HTTP/1.1" 405 1051 http-bio-9090-exec-5 1
 127.0.0.1 - - [28/Dec/2016:18:22:08 +0800] "DELETE /users HTTP/1.1" 405 1051 http-bio-9090-exec-7 4
+127.0.0.1 - - [28/Dec/2016:18:32:20 +0800] "GET /users HTTP/1.1" 500 13505 http-bio-9090-exec-9 224
