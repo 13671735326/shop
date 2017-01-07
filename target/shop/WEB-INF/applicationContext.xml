@@ -14,6 +14,7 @@
         http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
     <context:annotation-config />
     <context:component-scan base-package="com.java2.web" />
+    <mvc:resources mapping="/static/**" location="/static/" />
     
     <mvc:annotation-driven />
     <bean
@@ -31,9 +32,10 @@
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/stu" />
+        <property name="url" value="jdbc:mysql://localhost:3306/online_shopping" />
         <property name="username" value="root" />
         <property name="password" value="root" />
+       
     </bean>
     <bean id="entityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

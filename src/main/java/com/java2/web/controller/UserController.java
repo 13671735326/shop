@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java2.web.dtos.UserDTO;
-import com.java2.web.entity.UserEntity;
 import com.java2.web.service.UserService;
 
 @RestController
@@ -29,20 +28,20 @@ public class UserController {
 		userService.addUser(user);
 	}
 
-	@RequestMapping(path = "removeUser/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
 	public void removeUser(@PathVariable int id) {
 		userService.removeUser(id);
 	}
 
 	@RequestMapping(path = "", method = RequestMethod.PUT)
-	public void updateStudent(@RequestBody UserDTO user) {
+	public void updateUser(@RequestBody UserDTO user) {
 		userService.updateUser(user);
 	}
 
-	@RequestMapping(path = "", method = RequestMethod.GET)
-	public UserDTO getUse(@PathVariable int userId) {
-		return userService.getUser(userId);
-
-	}
+	 @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+	 public UserDTO getUse(@PathVariable int id) {
+	 return userService.getUser(id);
+	
+	 }
 
 }
